@@ -1,0 +1,153 @@
+<html>
+<head>
+<style>
+body{
+background-image: url("abcd.jpg");
+}
+
+table{
+	
+  border:1px double  black;
+  border-width: 5px;
+  outline: #4CAF50 solid 5px;
+    outline-offset: 5px;
+	outline-width: 5px;
+  background-color: hsl(0, 0%, 71%);
+  margin-top:160px;
+}
+
+td{
+  padding-top: 10px;
+  padding-bottom: 10px; 
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+button[type=submit] {
+    width: 65%;
+    padding: 12px 8px;
+    margin-left: 80px;
+    margin-top: auto;
+ 
+    margin-right: -20px;
+    border: none;
+    border-radius: 4px;
+   
+    background-color: green;
+    color: white;
+    font-size: 15px;
+}
+</style>
+</head>
+
+<body>
+<table align="center">
+
+	<tr>
+		<td>Name:</td>
+		<td><input type="text" name="Name" id="Name"></td>
+	</tr>
+	<tr>
+		<td>Number:</td>
+		<td><input type="tel" id="number" name="number" ></td>
+	</tr>
+	<tr>
+		<td>Email:</td>
+		<td><input type="email" name="Email" id="Email"></td>
+	</tr>
+	<tr>
+		<td>Birthdate:</td>
+		<td><input type="date" name="Birthdate" id="Birthdate"></td>
+	</tr>
+	<tr>
+		<td>Password:</td>
+		<td><input type="password" name="Password" id="Password"></td>
+	</tr>
+	<tr>
+		<td>Gender:</td>
+		<td><input type="radio" name="Gender" id="Male" value="Male"/>Male
+		<input type="radio" name="Gender" id="Female" value="Female"/>Female</td>
+	</tr>
+	<tr>
+		<td>Language:</td>
+		<td>
+			<select name="Language" id="Language">
+	        <option value="select"> select</option>
+			<option value="English"> English</option>
+			<option value="Hindi"> Hindi</option>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td>Hobby:</td>
+		<td>
+		<input type="checkbox" name="Hobby" value="cricket">Cricket
+		<input type="checkbox" name="Hobby" value="Basketball">Basket Ball
+		</td>
+	</tr>
+	
+	<tr>
+	<td>Address:</td>
+	<td><textarea id="textarea" name="textarea"></textarea></td>
+	</tr>
+	
+	<tr align="center">
+	<td ><button id="button">Submit</button></td>
+	<td></td>
+	</tr>
+</table>
+
+<p id="data1" ></p>
+<p id="data2" ></p>
+<p id="data3" ></p>
+<p id="data4" ></p>
+<p id="data5" ></p>
+<p id="data6" ></p>
+<p id="data7" ></p>
+<p id="data8" ></p>
+<p id="data9" ></p>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+<script>
+		 $(document).ready(function () {
+			$("#button").click(function () {
+                var name = $("#Name").val();
+                var number = $("#number").val();
+                var email = $("#Email").val();
+                var birthdate = $("#Birthdate").val();
+                var password = $("#Password").val();
+                var language = $("#Language").val();
+                var address = $("#textarea").val();
+				
+                var option = $('input[type="radio"]:checked');
+				if(option.length > 0)
+				{
+					$('#data6').append("your gender is:" +option.val());
+				}
+				
+				var checkbox = $('input[type="checkbox"]:checked');
+				var string =  "";
+				if(checkbox.length > 0)
+				{
+					checkbox.each(function(){
+						string += $(this).val();
+					});
+					$('#data9').append("your hobby is:" +string);
+
+				
+				}
+				 $("#data1").prepend("your name is:" +name); 
+				 $("#data2").append("your number is:" +number); 
+				 $("#data3").append("your email is:" +email);
+				 $("#data4").append("your birthdate is:" +birthdate);
+				 $("#data5").append("your password is:" +password);
+				 $("#data7").append("your language is:" +language);
+				 $("#data8").append("your address is:" +address); 
+
+				 });
+			});
+		</script>
+	</body>
+</html>
